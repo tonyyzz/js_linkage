@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>linkage</title>
+	<link href="../src/yLinkage.css" rel="stylesheet" />
+	<script src="../src/jquery.js"></script>
+	<script src="../src/yLinkage.js"></script>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.content {
+			width: 500px;
+			height: 200px;
+			margin: 20px auto;
+			background-color: #eee;
+			padding: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div id="linkage" class="content"></div>
+
+	<script>
+		$(function () {
+			var linkageOption = {
+				bindId: 'linkage',			//必填（绑定的id）
+				level: 3,					//选填（联动级别）默认为3，即为省市区（如果级别为1，则只显示省；级别为2，则显示省市；级别为3，则显示省市区）
+				callback: function (arr) {	//选填（选择改变并达到可以回调的条件后的执行方法，obj包含选择后的相关信息）
+					console.log(arr);	//arr数组按照level等级分别按照省市区排序
+				},
+
+				className: 'selectCls',			//选填（select标签的class名称）默认为空
+				topOptionText: '--请选择--',		//选填（select顶部一栏的提示项文本）默认为'--请选择--'
+			}
+
+			yLinkage.html(linkageOption);
+		})
+	</script>
+</body>
+</html>
